@@ -5,7 +5,9 @@
   <meta name="viewport"
     content="width=device-width,
        initial-scale=1.0">
-  <title>Sesión</title>
+  <title>
+    Producto Nuevo
+  </title>
   <script
     src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js">
     </script>
@@ -23,51 +25,63 @@
   <script type="module"
     src="cmp/mi-footer.js">
     </script>
-  <script type="module"
-    src="cmp/mi-progreso.js">
-    </script>
   <link rel="stylesheet"
     href="css/estilos.css">
 </head>
 <body>
- <form name="forma">
+  <form name="forma">
     <mi-nav></mi-nav>
     <header>
-      <h1>Sesión</h1>
+      <h1>Producto Nuevo</h1>
       <div class="herramientas">
-        <button
-          type="button"
-          name="terminarSesión">
-          Terminar Sesión
+        <a
+          href="productos.html">
+          Cancelar</a>
+        <button type="submit">
+          Guardar
         </button>
       </div>
     </header>
-    <figure>
-      <img id="avatar" src="d297a3eced48990f8001c8624ec84145.jpg"
-        alt="Avatar">
-    </figure>
     <p>
       <label>
-        Email
-        <output name="email">
-          <mi-progreso>
-          </mi-progreso>
-        </output>
+        Identificador
+        <input name="identificador"
+          type="text" required>
       </label>
     </p>
     <p>
       <label>
         Nombre
-        <output name="nombre">
-          <mi-progreso>
-          </mi-progreso>
-        </output>
+        <input name="nombre"
+          type="text" required>
+      </label>
+    </p>
+    <p>
+      <label>
+        Contacto de proveedor
+        <input name="contacto"
+          type="text" required>
+      </label>
+    </p>
+    <p>
+      <label>
+        Tipo
+        <input name="tipo"
+          type="text" required>
+      </label>
+    </p>
+    <p>
+      <label>
+        Fecha
+        <input name="fecha"
+          type="date" required>
       </label>
     </p>
     <mi-footer></mi-footer>
   </form>
   <script type="module"
-    src="js/CtrlSesion.js">
+    src="js/CtrlProductoNuevo.js">
     </script>
 </body>
 </html>
+
