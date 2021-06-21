@@ -13,7 +13,7 @@ import {
   tieneRol
 } from "./seguridad.js";
 
-const daoProducto =
+const daoEvento =
   getFirestore().
     collection("Evento");
 const params =
@@ -41,7 +41,7 @@ async function protege(usuario) {
 async function busca() {
   try {
     const doc =
-      await daEvento .
+      await daoEvento .
         doc(id).
         get();
     if (doc.exists) {
@@ -93,7 +93,7 @@ async function guarda(evt) {
       tipo,
       fecha
     };
-    await daEvento .
+    await daoEvento.
       doc(id).
       set(modelo);
       muestraEventos ();
@@ -106,7 +106,7 @@ async function elimina() {
   try {
     if (confirm("Confirmar la " +
       "eliminación")) {
-      await daEvento .
+      await daoEvento.
         doc(id).
         delete();
         muestraEventos ();
