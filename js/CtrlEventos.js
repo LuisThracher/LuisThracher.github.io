@@ -13,7 +13,7 @@ import {
 /** @type {HTMLUListElement} */
 const lista = document.
   querySelector("#lista");
-const daEvento  =
+const daoEvento  =
   getFirestore().
     collection("Evento ");
 
@@ -32,7 +32,7 @@ async function protege(usuario) {
 }
 
 function consulta() {
-  daEvento .
+  daoEvento .
     orderBy("nombre")
     .onSnapshot(
       htmlLista, errConsulta);
@@ -78,7 +78,7 @@ function htmlFila(doc) {
   return ( /* html */
     `<li>
       <a class="fila" href=
-  "alumno.html?${parámetros}">
+  "evento.html?${parámetros}">
         <strong class="primario">
           ${codigoid} ${nombre} ${dformat}
         </strong>
