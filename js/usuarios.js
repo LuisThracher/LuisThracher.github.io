@@ -1,3 +1,4 @@
+
 import {
   getFirestore
 } from "../lib/fabrica.js";
@@ -11,7 +12,7 @@ import {
   muestraUsuarios
 } from "./navegacion.js";
 
-const SIN_PRODUCTOS = /* html */
+const SIN_EVENTOS = /* html */
   `<option value="">
     -- Sin Productos --
   </option>`;
@@ -19,8 +20,8 @@ const SIN_PRODUCTOS = /* html */
 const firestore = getFirestore();
 const daoRol = firestore.
   collection("Rol");
-const daoProducto = firestore.
-  collection("Producto");
+const daEvento  = firestore.
+  collection("Evento");
 const daoUsuario = firestore.
   collection("Usuario");
 
@@ -29,22 +30,22 @@ const daoUsuario = firestore.
     HTMLSelectElement} select
  * @param {string} valor */
 export function
-selectProductos(select,
+selectEventos(select,
     valor) {
   valor = valor || "";
-  daoProducto.
+  daoEvento .
     orderBy("nombre").
     onSnapshot(
       snap => {
-        let html = SIN_PRODUCTOS;
+        let html = SIN_EVENTOS;
         snap.forEach(doc =>
-          html += htmlProducto(
+          html += htmlEvento(
             doc, valor));
         select.innerHTML = html;
       },
       e => {
         muestraError(e);
-        selectProductos(
+        selectEventos(
           select, valor);
       }
     );
@@ -56,13 +57,13 @@ selectProductos(select,
   DocumentSnapshot} doc
  * @param {string} valor */
 function
-htmlProducto(doc, valor) {
+htmlEvento(doc, valor) {
   const selected =
     doc.id === valor ?
       "selected" : "";
   /**
    * @type {import("./tipos.js").
-                  Producto} */
+                  Evento} */
   const data = doc.data();
   return (/* html */
     `<option
@@ -147,15 +148,15 @@ export async function
     id) {
   try {
     evt.preventDefault();
-    const productoId  =
+    const eventoid   =
       getForánea(formData,
-        "productoId ");
+        "eventoid  ");
     const rolIds =
       formData.getAll("rolIds");
     await daoUsuario.
       doc(id).
       set({
-        productoId ,
+        eventoid  ,
         rolIds
       });
     const avatar =
