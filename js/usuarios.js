@@ -14,13 +14,13 @@ import {
 
 const SIN_EVENTOS = /* html */
   `<option value="">
-    -- Sin Productos --
+    -- Sin Eventos --
   </option>`;
 
 const firestore = getFirestore();
 const daoRol = firestore.
   collection("Rol");
-const daEvento  = firestore.
+const daoEvento  = firestore.
   collection("Evento");
 const daoUsuario = firestore.
   collection("Usuario");
