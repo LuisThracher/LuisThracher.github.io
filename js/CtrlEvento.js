@@ -15,7 +15,7 @@ import {
 
 const daoProducto =
   getFirestore().
-    collection("Producto");
+    collection("Evento");
 const params =
   new URL(location.href).
     searchParams;
@@ -41,18 +41,18 @@ async function protege(usuario) {
 async function busca() {
   try {
     const doc =
-      await daoProducto.
+      await daEvento .
         doc(id).
         get();
     if (doc.exists) {
       /**
        * @type {
           import("./tipos.js").
-                  Alumno} */
+                  daEvento } */
       const data = doc.data();
-      forma.identificador.value = data.identificador;
+      forma.codigoid.value = data.codigoid;
       forma.nombre.value = data.nombre || "";
-      forma.contacto.value = data.contacto || "";
+      forma.telefono .value = data.telefono  || "";
       forma.tipo.value = data.tipo || "";
       forma.fecha.value = data.fecha || "";
       forma.addEventListener(
@@ -66,7 +66,7 @@ async function busca() {
     }
   } catch (e) {
     muestraError(e);
-    muestraAlumnos();
+    muestraEventos ();
   }
 }
 
@@ -76,27 +76,27 @@ async function guarda(evt) {
     evt.preventDefault();
     const formData =
       new FormData(forma);
-    const identificador = getString(
-        formData, "identificador").trim();  
+    const codigoid = getString(
+        formData, "codigoid").trim();  
     const nombre = getString(formData, "nombre").trim();
-    const contacto = getString(formData, "contacto").trim();
+    const telefono  = getString(formData, "telefono ").trim();
     const tipo = getString(formData, "tipo").trim();
     const fecha = getString(formData, "fecha").trim();
     /**
      * @type {
         import("./tipos.js").
-                Alumno} */
+                Evento } */
     const modelo = {
-      identificador, 
+      codigoid, 
       nombre,
-      contacto,
+      telefono ,
       tipo,
       fecha
     };
-    await daoProducto.
+    await daEvento .
       doc(id).
       set(modelo);
-      muestraProductos();
+      muestraEventos ();
   } catch (e) {
     muestraError(e);
   }
@@ -106,13 +106,12 @@ async function elimina() {
   try {
     if (confirm("Confirmar la " +
       "eliminación")) {
-      await daoProducto.
+      await daEvento .
         doc(id).
         delete();
-        muestraProductos();
+        muestraEventos ();
     }
   } catch (e) {
     muestraError(e);
   }
 }
-
