@@ -15,7 +15,7 @@ import {
 
 const daoProducto =
   getFirestore().
-    collection("Producto");
+    collection("Evento");
 /** @type {HTMLFormElement} */
 const forma = document["forma"];
 getAuth().onAuthStateChanged(
@@ -38,28 +38,27 @@ async function guarda(evt) {
     evt.preventDefault();
     const formData =
       new FormData(forma);
-    const identificador = getString(
-        formData, "identificador").trim();  
+    const codigoid = getString(
+        formData, "codigoid").trim();  
     const nombre = getString(formData, "nombre").trim();
-    const contacto = getString(formData, "contacto").trim();
+    const telefono  = getString(formData, "telefono").trim();
     const tipo = getString(formData, "tipo").trim();
     const fecha = getString(formData, "fecha").trim();
     /**
      * @type {
         import("./tipos.js").
-                Alumno} */
+                Articulo} */
     const modelo = {
-      identificador,
+      codigoid,
       nombre,
-      contacto,
+      telefono ,
       tipo,
       fecha 
     };
-    await daoProducto.
+    await daEvento .
       add(modelo);
-      muestraProductos();
+      muestraEventos ();
   } catch (e) {
     muestraError(e);
   }
 }
-
