@@ -7,13 +7,13 @@ import {
   muestraError
 } from "../lib/util.js";
 import {
-  muestraProductos
+  muestraEventos
 } from "./navegacion.js";
 import {
   tieneRol
 } from "./seguridad.js";
 
-const daoProducto =
+const daoEvento =
   getFirestore().
     collection("Evento");
 /** @type {HTMLFormElement} */
