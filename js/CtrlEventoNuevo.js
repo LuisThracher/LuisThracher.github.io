@@ -55,7 +55,7 @@ async function guarda(evt) {
       tipo,
       fecha 
     };
-    await daEvento .
+    await daoEvento .
       add(modelo);
       muestraEventos ();
   } catch (e) {
