@@ -4,7 +4,7 @@ class MiFooter
     this.innerHTML = /* html */
       `<p>
         &copy; 2021
-        Jimenez Sanches Luis Eduardo.
+        Jiménez Sánchez Luis Eduardo.
       </p>`;
   }
 }
