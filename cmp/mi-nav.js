@@ -14,7 +14,11 @@ class MiNav extends HTMLElement {
       `<ul>
         <li>
           <a href="index.html">
+            Sesión</a>
+            <a href="index.html">
             Playeras</a>
+            <a href="index.html">
+            Chat</a>
         </li>
       </ul>`;
     this.ul =
